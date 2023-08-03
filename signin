@@ -41,14 +41,15 @@ http {
         #access_log  logs/host.access.log  main;
 
         location / {
-            root   html;
-            index  index.html index.htm;
+            proxy_pass http://localhost:8080;;
         }
-
         location /signin {
-        alias /etc/nginx/html/;
-        index signin.html;
-        }
+            try_files $uri $uri/ /index.html;
+                }
+            }
+
+
+
 
         #error_page  404              /404.html;
 
